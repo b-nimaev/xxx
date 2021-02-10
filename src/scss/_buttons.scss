@@ -1,0 +1,10 @@
+button {
+
+	border: 0;
+	padding: 10px 20px;
+
+	&.success {
+		background: $green;
+		color: $white;
+	}
+}
