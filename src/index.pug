@@ -34,3 +34,62 @@ body
 					span
 					span
 
+	main
+		.container
+			.row
+				.col-md-9
+					.row
+						.col-md-4.product
+							article
+								// .constructor__opened
+								img(src="img/product.jpg")
+								h2 Название блюда
+								p Описание блюда, максимум на пять строчек. Американская классика с пикантной пепперони, Моцареллой и фирменным томатным соусом
+								
+								ul.taxonomies
+									li(class="active", data-term="fat")
+										a(href="javascript:void(0)") Толстое
+									li(data-term="thin")
+										a(href="javascript:void(0)") Тонкое
+								ul.atts
+									li(class="active")
+										a(href="javascript:void(0)", data-fat="23") 23 см
+									li
+										a(href="javascript:void(0)", data-fat="30") 30 см
+									li
+										a(href="javascript:void(0)", data-fat="40") 40 см
+								.constructor
+									button.change
+										img(src="img/add.png") 
+										span Добавить/убрать
+									aside
+										h4 Добавить
+										
+										ul.append
+											li
+												a(href="javascript:void(0)" data-id="23")
+													span Острый соус Чили
+											li.removed
+												a(href="javascript:void(0)" data-id="92")
+													span Оливки
+										h4 Убрать
+										ul.remove
+											li
+												a(href="javascript:void(0)" data-id="14")
+													span Лук
+											li.removed
+												a(href="javascript:void(0)" data-id="51")
+													span Колабаса
+											li
+												a(href="javascript:void(0)" data-id="23")
+													span Сыр
+										
+										.aside-footer
+											button.add_to_cart В корзину
+											button.cancel Отменить
+								.product-footer
+									button.add_to_cart В корзину
+									h4 125 руб
+									
+									
+	script(src="main.js")

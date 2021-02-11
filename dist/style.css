@@ -15,6 +15,12 @@ button {
 .container {
   max-width: 1200px;
   margin: auto; }
+  .container .row {
+    display: flex; }
+    .container .row .col-md-9 {
+      width: 75%; }
+    .container .row .col-md-4 {
+      width: 33.3333%; }
 
 header:before {
   content: '';
@@ -51,6 +57,141 @@ ul.nav {
       margin: 2px 0;
       border-radius: 3px;
       background: #a7a7a7; }
+
+.add_to_cart {
+  margin: auto 0;
+  font-size: 1.2rem;
+  background: #C1272D;
+  padding: 15px 30px;
+  color: #fff;
+  border-radius: 30px; }
+
+.product {
+  padding: 15px; }
+  .product article {
+    border-radius: 10px;
+    position: relative;
+    padding: 0 15px 30px; }
+    .product article.constructor__opened:before {
+      content: '';
+      position: absolute;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      top: 0;
+      left: -15px;
+      height: 100%;
+      width: calc(100% + 30px);
+      background: #000;
+      opacity: .7; }
+    .product article img {
+      width: calc(100% + 60px);
+      margin: 0 -30px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px; }
+    .product article p {
+      margin-bottom: 21px; }
+    .product article ul {
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+      display: flex;
+      margin: -5px -15px; }
+      .product article ul li {
+        width: 50%;
+        margin: 0;
+        text-align: center; }
+        .product article ul li a {
+          border-radius: 30px;
+          color: #694041;
+          width: 100%;
+          display: block;
+          padding: 8px 15px; }
+        .product article ul li.active a {
+          background: #E0E0E0; }
+      .product article ul.atts {
+        margin: 15px -15px;
+        flex-wrap: wrap; }
+        .product article ul.atts li {
+          width: 33.3333%; }
+    .product article .constructor {
+      position: relative; }
+      .product article .constructor aside {
+        display: none;
+        background: #fff;
+        position: absolute;
+        bottom: -90px;
+        right: 0;
+        width: calc(100% - 30px);
+        padding: 15px;
+        border-radius: 10px; }
+        .product article .constructor aside.show {
+          display: block; }
+        .product article .constructor aside h4 {
+          margin: 15px 0; }
+        .product article .constructor aside ul {
+          flex-direction: column;
+          margin-bottom: 30px;
+          position: relative;
+          width: 100%; }
+          .product article .constructor aside ul li {
+            text-align: left;
+            margin: 0;
+            padding: 5px 15px;
+            width: 100%; }
+            .product article .constructor aside ul li a {
+              display: flex;
+              justify-content: space-between; }
+              .product article .constructor aside ul li a .rm-item {
+                position: relative;
+                display: flex;
+                right: 15px;
+                width: 15px;
+                margin: auto 0; }
+                .product article .constructor aside ul li a .rm-item span {
+                  position: absolute;
+                  top: 7.5px;
+                  left: 15px;
+                  transform: rotate(45deg);
+                  transform-origin: center;
+                  height: 2px;
+                  width: 15px;
+                  background: #ccc;
+                  display: block; }
+                  .product article .constructor aside ul li a .rm-item span:last-child {
+                    transform: rotate(-45deg); }
+            .product article .constructor aside ul li.removed a span {
+              opacity: .6; }
+            .product article .constructor aside ul li.removed a .rm-item span {
+              transform: rotate(0); }
+              .product article .constructor aside ul li.removed a .rm-item span:last-child {
+                transform: rotate(90deg); }
+        .product article .constructor aside .aside-footer {
+          display: flex;
+          flex-direction: column; }
+          .product article .constructor aside .aside-footer button {
+            font-size: 1.15rem; }
+          .product article .constructor aside .aside-footer .cancel {
+            margin-top: 15px;
+            border: 1px solid #ccc;
+            border-radius: 50px; }
+    .product article .change {
+      display: flex;
+      font-size: 1.2rem;
+      color: #aaa;
+      border: 1px solid #aaa;
+      border-radius: 30px;
+      margin: 30px auto; }
+      .product article .change img {
+        height: 20px;
+        width: 20px;
+        margin: auto 5px auto 0; }
+      .product article .change span {
+        margin: auto; }
+    .product article .product-footer {
+      display: flex; }
+      .product article .product-footer h4 {
+        margin: auto 0 auto auto;
+        font-size: 1.2rem; }
 
 button {
   border: 0;
