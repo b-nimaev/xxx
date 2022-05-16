@@ -1,5 +1,4 @@
 // vue.config.js
-const path = require('path')
 const {
   defineConfig
 } = require('@vue/cli-service')
