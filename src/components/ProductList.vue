@@ -24,6 +24,23 @@
               <p>Название блюда, может быть и длинным, но не слишком</p>
               <p class="chars">Толстое, 23 см</p>
             </div>
+
+            <button class="remove">
+              <svg
+                width="11"
+                height="11"
+                viewBox="0 0 11 11"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M2.41423 1L1.00002 2.41421L4.40957 5.82377L1 9.23334L2.41421 10.6476L5.82379 7.23798L9.23335 10.6475L10.6476 9.23333L7.238 5.82377L10.6475 2.41423L9.23333 1.00001L5.82379 4.40956L2.41423 1Z"
+                  fill="#E0E0E0"
+                />
+              </svg>
+            </button>
           </div>
 
           <div class="pfooter">
@@ -38,6 +55,16 @@
           </div>
         </li>
       </ul>
+
+      <div class="footer">
+        <p class="title">Сумма заказа</p>
+        <p class="price">750 ₽</p>
+      </div>
+
+      <button class="sendform">
+        <span>Оформить заказ</span>
+      </button>
+      <p class="bonus">Будет начислено 55 бонусов</p>
     </aside>
   </div>
 </template>
@@ -80,11 +107,22 @@ input[type="number"] {
   top: 2px;
 }
 
+.sendform {
+  background: #c1272d;
+  color: #fff;
+  border-radius: 20px;
+  width: 100%;
+  text-transform: uppercase;
+  padding: 10px 40px;
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
 #basket {
   box-shadow: 0px 1px 1px 0px #00000026;
   border-radius: 10px;
   background: #fff;
-  height: 300px;
   width: 260px;
   padding: 20px;
   text-align: left;
@@ -102,6 +140,18 @@ input[type="number"] {
     border-radius: 10px;
     box-shadow: 0px 3px 0px 0px #c1272d inset;
     z-index: -1;
+  }
+  .footer {
+    margin-top: 15px;
+    display: flex;
+    p {
+      &.price {
+        margin: auto 0 auto auto;
+        font-size: 18px;
+        line-height: 22px;
+        font-weight: 400;
+      }
+    }
   }
   .header {
     display: flex;
@@ -134,6 +184,14 @@ input[type="number"] {
       color: #a7a7a7;
       margin-top: 5px;
     }
+
+    &.bonus {
+      color: #a7a7a7;
+      font-size: 12px;
+      display: block;
+      text-align: center;
+      margin-top: 8px;
+    }
   }
 }
 
@@ -142,8 +200,15 @@ ul {
   margin: 20px 0 0;
   list-style-type: none;
   li {
+    border-bottom: 1px solid #dedede;
+    padding-bottom: 15px;
     .product-content {
       display: flex;
+      position: relative;
+      .remove {
+          background: transparent;
+          margin: 0 0 auto 0;
+      }
     }
     .pfooter {
       display: flex;
