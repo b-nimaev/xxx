@@ -1,71 +1,86 @@
 <template>
-  <div class="container dflex">
-    <div class="product-list"></div>
-    <aside id="basket">
-      <!-- basket header  -->
-      <div class="header">
-        <p class="title">
-          <span>Корзина</span> <span class="counter">(3)</span>
-        </p>
-        <img src="@/assets/img/basket.png" alt="Basket" />
+  <div class="container">
+    <h1 class="selected_cat">Салаты</h1>
+    <div class="dflex">
+      <div class="product-list">
+          
       </div>
+      <aside id="basket">
+        <!-- basket header  -->
+        <div class="header">
+          <p class="title">
+            <span>Корзина</span> <span class="counter">(3)</span>
+          </p>
+          <img src="@/assets/img/basket.png" alt="Basket" />
+        </div>
 
-      <!-- cart -->
-      <ul>
-        <li>
-          <div class="product-content">
-            <div class="product-image">
-              <img
-                :src="require('@/assets/img/product-image.jpg')"
-                alt="Product"
-              />
-            </div>
-            <div class="product-title">
-              <p>Название блюда, может быть и длинным, но не слишком</p>
-              <p class="chars">Толстое, 23 см</p>
-            </div>
-
-            <button class="remove">
-              <svg
-                width="11"
-                height="11"
-                viewBox="0 0 11 11"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M2.41423 1L1.00002 2.41421L4.40957 5.82377L1 9.23334L2.41421 10.6476L5.82379 7.23798L9.23335 10.6475L10.6476 9.23333L7.238 5.82377L10.6475 2.41423L9.23333 1.00001L5.82379 4.40956L2.41423 1Z"
-                  fill="#E0E0E0"
+        <!-- cart -->
+        <ul>
+          <li v-for="product in products" :key="product">
+            <div class="product-content">
+              <div class="product-image">
+                <img
+                  :src="require('@/assets/img/product-image.jpg')"
+                  alt="Product"
                 />
-              </svg>
-            </button>
-          </div>
+              </div>
+              <div class="product-title">
+                <p>{{ product.title }}</p>
+                <p class="chars">
+                  <span v-for="(char, index) in product.chars" :key="char">
+                    {{ char }}
+                    {{ index == product.chars.length - 1 ? "" : ", &nbsp;" }}
+                  </span>
+                </p>
+              </div>
 
-          <div class="pfooter">
-            <div class="count">
-              <DecrementButton />
-              <input value="1" type="number" name="count" id="count" />
-              <IncrementButton />
+              <button class="remove">
+                <svg
+                  width="11"
+                  height="11"
+                  viewBox="0 0 11 11"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M2.41423 1L1.00002 2.41421L4.40957 5.82377L1 9.23334L2.41421 10.6476L5.82379 7.23798L9.23335 10.6475L10.6476 9.23333L7.238 5.82377L10.6475 2.41423L9.23333 1.00001L5.82379 4.40956L2.41423 1Z"
+                    fill="#E0E0E0"
+                  />
+                </svg>
+              </button>
             </div>
-            <div class="price">
-              <p>125 ₽</p>
+
+            <div class="pfooter">
+              <div class="count">
+                <DecrementButton />
+                <input
+                  value="1"
+                  type="number"
+                  :name="'count-by-' + product.productId"
+                  :id="'product-id-' + product.productId"
+                />
+                <IncrementButton />
+              </div>
+              <div class="price">
+                <p>125 ₽</p>
+              </div>
             </div>
-          </div>
-        </li>
-      </ul>
+          </li>
+        </ul>
 
-      <div class="footer">
-        <p class="title">Сумма заказа</p>
-        <p class="price">750 ₽</p>
-      </div>
+        <div class="footer">
+          <p class="title">Сумма заказа</p>
+          <p class="price">{{ price }} ₽</p>
+        </div>
 
-      <button class="sendform">
-        <span>Оформить заказ</span>
-      </button>
-      <p class="bonus">Будет начислено 55 бонусов</p>
-    </aside>
+        <button class="sendform">
+          <span>Оформить заказ</span>
+        </button>
+        <p class="bonus">Будет начислено 55 бонусов</p>
+      </aside>
+    </div>
   </div>
 </template>
 
@@ -77,12 +92,31 @@ export default {
     IncrementButton,
     DecrementButton,
   },
+  computed: {
+    products: function () {
+      return this.$store.getters.products;
+    },
+
+    price: function () {
+      let products = this.$store.getters.products;
+      let temp;
+
+      products.forEach((element) => {
+        temp = element.price;
+      });
+
+      return temp;
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .container {
   margin: 50px auto;
+}
+.selected_cat {
+    text-align: left;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -202,12 +236,13 @@ ul {
   li {
     border-bottom: 1px solid #dedede;
     padding-bottom: 15px;
+    margin-bottom: 15px;
     .product-content {
       display: flex;
       position: relative;
       .remove {
-          background: transparent;
-          margin: 0 0 auto 0;
+        background: transparent;
+        margin: 0 0 auto 0;
       }
     }
     .pfooter {
