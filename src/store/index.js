@@ -4,6 +4,21 @@ import {
 
 export default createStore({
   state: {
+    products: [{
+      productId: 1,
+      price: 125,
+      title: "Название блюда",
+      chars: ['Толстое', '23 см'],
+      thumb: 'product-image.jpg',
+      description: `Описание блюда, максимум на пять строчек. Американская классика с
+            пикантной пепперони, Моцареллой и фирменным томатным соусом`
+    }, {
+      productId: 2,
+      price: 240,
+      title: "Название блюда 2",
+      chars: ['Тонкое', '25 см'],
+      thumb: ''
+    }],
     cart: [{
         title: "Название блюда",
         chars: ['Толстое', '23 см'],
@@ -25,6 +40,9 @@ export default createStore({
   getters: {
     cart: (state) => {
       return state.cart
+    },
+    products: (state) => {
+      return state.products
     }
   },
   mutations: {
