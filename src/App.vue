@@ -81,6 +81,7 @@
   color: #2c3e50;
   font-weight: 300;
   background: #fafafa;
+  // background: #ffe3e3;
 }
 #pre-footer {
   background-color: #fff;
@@ -147,8 +148,10 @@
     }
   }
   .map {
-    flex: 1;
-    margin-top: 15px;
+    margin-top: 30px;
+    img {
+      max-width: 100%;
+    }
   }
 }
 
@@ -254,5 +257,9 @@ nav {
       color: #42b983;
     }
   }
+}
+
+@media screen and (max-width: 1400px) {
+
 }
 </style>
