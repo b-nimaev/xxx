@@ -1,17 +1,26 @@
 <template>
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4" v-for="product in products" :key="product">
       <article>
         <div class="header">
           <div class="product-thumb">
-            <img src="@/assets/img/product-image.jpg" alt="Product" />
+            <img
+              v-if="product.thumb"
+              :src="require('@/assets/img/' + product.thumb)"
+              alt="Product"
+            />
+            <img
+              v-else
+              src="data:image/webp;base64,UklGRpwEAABXRUJQVlA4WAoAAAAgAAAAGwEA5QAASUNDUBgCAAAAAAIYAAAAAAQwAABtbnRyUkdCIFhZWiAAAAAAAAAAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAAHRyWFlaAAABZAAAABRnWFlaAAABeAAAABRiWFlaAAABjAAAABRyVFJDAAABoAAAAChnVFJDAAABoAAAAChiVFJDAAABoAAAACh3dHB0AAAByAAAABRjcHJ0AAAB3AAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAFgAAAAcAHMAUgBHAEIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFhZWiAAAAAAAABvogAAOPUAAAOQWFlaIAAAAAAAAGKZAAC3hQAAGNpYWVogAAAAAAAAJKAAAA+EAAC2z3BhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABYWVogAAAAAAAA9tYAAQAAAADTLW1sdWMAAAAAAAAAAQAAAAxlblVTAAAAIAAAABwARwBvAG8AZwBsAGUAIABJAG4AYwAuACAAMgAwADEANlZQOCBeAgAAUB8AnQEqHAHmAD4pFIlDIaEhEIoENBgChLS3cLtYjdoA2oyzQj0A8XMx9Y8zMfWPMzH1jzMx9Y8zMfWPMzH1jzMx9Y8zMfWPMzH1jzMx9Y8zMfWPMzH1jy/L9WrfYwEiVs3351mt0wtk8RaOSu7sHEKpqAm4YQ4DfWmSRNgFk2Cd6msxhhXOtgC1qpf8n2L/uiECV8fWNajDlb3HCXpA3JAhzVzgLcDXO7Dv+xUqXPLDi2dlV7jEYgX+0FF+x5UBZEVdYF4xSJ9oKseZmPrHmZj6x5mY+seZmPrHmZj6x5mY+seZmPrHmZj6x5mY+seZmPrHmZj6x5mY+seZmPrHmZj6QAD+/+8jAAACHw51FVWapwiCWzoK2w5F5CmcsFCbx7VOy2bmG6oKaFNZ/1DsotDJzMSDVIno8/kCUZWACAmpzmYLNGd7iIjgg/hmuSQ91tx4+0+BAoX/gTX+G2OeqMtfX5Zmo30jETQe6GNIGHHlugF4//S7lONHcmlg83CSthyOGOPPMTxFxnno3d/YlzQXMLOX+qgPJkQrxtLy3f+BvYK8OUFkqHVMRvRHmAeTU7VLnX2fcUMdNY+n7Tu1zXih0AZk2Aux39SulgAMTRoc2mHkkAi6XzGn+KF+Uqa1YHS4XGSc9MEziFoPNqgCL7OX2qaaH4RPHp/KAM81gQqWST9AbaOg3YsFEdaX5DSIkXkbi4e7E7C1abfXjC1gnn/Qb7PMuTZouqi2Fe6DElD7v934lACZL4uUfzKnst9XUtpAfwKUkqeuNp38eVGbh0lYyOGEy88AAAAAAAAA"
+              alt="Product has't picture"
+            />
           </div>
           <h4 class="product-title">Название блюда</h4>
-          <p class="description">
-            Описание блюда, максимум на пять строчек. Американская классика с
-            пикантной пепперони, Моцареллой и фирменным томатным соусом
+          <p class="description" v-if="product.description">
+            {{ product.description }}
           </p>
         </div>
+
         <div class="content">
           <div class="input-group">
             <div>
@@ -37,14 +46,16 @@
               <input type="radio" id="40cm" name="radius" value="40" />
             </div>
           </div>
-          <button class="constructor">
+          
+          <button v-if="constructor" class="constructor">
             <img src="@/assets/img/icon-constructor.png" alt="Constructor" />
             <span>Добавить/убрать</span>
           </button>
         </div>
+
         <div class="footer">
-          <button @click="addToCart(3)" class="add-to-cart">В корзину</button>
-          <p class="price">125 ₽</p>
+          <button @click="addToCart(product.id)" class="add-to-cart">В корзину</button>
+          <p class="price">{{ product.price }} ₽</p>
         </div>
       </article>
     </div>
@@ -53,16 +64,20 @@
 
 <script>
 export default {
-	methods: {
-		addToCart(data) {
-			this.$store.commit("addToCart", data)
-		}
-	}
-}
+  computed: {
+    products() {
+      return this.$store.getters.products;
+    },
+  },
+  methods: {
+    addToCart(data) {
+      this.$store.commit("addToCart", data);
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-
 .constructor {
   background: none;
   border: 1px solid #ebebeb;
@@ -162,6 +177,5 @@ article {
     }
   }
 }
-
 </style>
 
