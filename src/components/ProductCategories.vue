@@ -63,4 +63,36 @@ a {
     line-height: 22px;
   }
 }
+
+@media screen and (max-width: 992px) {
+  .categories {
+    background: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    .container {
+      min-height: 100vh;
+      display: flex;
+    }
+  }
+  ul {
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: auto;
+    height: 300px;
+    li {
+      margin: 5px 0;
+      flex-basis: 30%;
+      a {
+        display: flex;
+        justify-content: center;
+        span {
+          margin: auto 0 auto 5px;
+        }
+      }
+    }
+  }
+}
 </style>

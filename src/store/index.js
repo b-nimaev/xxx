@@ -10,6 +10,28 @@ export default createStore({
       title: "Название блюда",
       chars: ['Толстое', '23 см'],
       thumb: 'product-image.jpg',
+      custom_fields: [{
+        name: 'thickness',
+        data: [{
+          title: 'Толстое',
+          field: 'fat'
+        }, {
+          title: 'Тонкое',
+          field: 'thin'
+        }]
+      }, {
+        name: 'radius',
+        data: [{
+          title: '23 см',
+          field: '23cm',
+        }, {
+          title: '30 см',
+          field: '30cm',
+        }, {
+          title: '40 см',
+          field: '40cm'
+        }]
+      }],
       description: `Описание блюда, максимум на пять строчек. Американская классика с
             пикантной пепперони, Моцареллой и фирменным томатным соусом`
     }, {
@@ -17,7 +39,42 @@ export default createStore({
       price: 240,
       title: "Название блюда 2",
       chars: ['Тонкое', '25 см'],
-      thumb: ''
+      thumb: 'product-image.jpg',
+      custom_fields: [{
+        name: 'thickness',
+        data: [{
+          title: 'Толстое',
+          field: 'fat'
+        }, {
+          title: 'Тонкое',
+          field: 'thin'
+        }]
+      }, {
+        name: 'radius',
+        data: [{
+          title: '23 см',
+          field: '23cm',
+        }, {
+          title: '30 см',
+          field: '30cm',
+        }]
+      }],
+      description: 'Описание блюда, максимум на пять строчек.'
+    }, {
+      productId: 3,
+      price: 125,
+      title: "Название блюда",
+      chars: ['Толстое', '23 см'],
+      thumb: 'product-image.jpg',
+      description: `Описание блюда, максимум на пять строчек. Американская классика с
+            пикантной пепперони, Моцареллой и фирменным томатным соусом`
+    }, {
+      productId: 4,
+      price: 240,
+      title: "Блюдо без конструктора",
+      chars: ['Тонкое', '25 см'],
+      thumb: 'product-image.jpg',
+      description: 'Американская классика с пикантной пепперони, Моцареллой и фирменным томатным соусом'
     }],
     cart: [{
         title: "Название блюда",
@@ -35,7 +92,8 @@ export default createStore({
         count: 2,
         thumb: 'product-image.jpg'
       }
-    ]
+    ],
+    mobile: false
   },
   getters: {
     cart: (state) => {
@@ -43,6 +101,9 @@ export default createStore({
     },
     products: (state) => {
       return state.products
+    },
+    mobile: (state) => {
+      return state.mobile
     }
   },
   mutations: {
@@ -55,25 +116,28 @@ export default createStore({
       });
     },
 
-    addToCart: (state, id) => {
+    addToCart: (state, product) => {
       let temp
       let condition = state.cart.some(function (e) {
         temp = e
-        return e.productId == id
+        return e.productId == product.id
       })
 
       if (!condition) {
         state.cart.push({
-          title: "Пицца",
-          chars: ['Тонкое', '19 см'],
-          price: 125,
-          productId: id,
+          title: product.title,
+          custom_fields: product.custom_fields,
+          price: product.price,
+          productId: product.id,
           count: 1
         })
       } else {
         temp.count++
       }
+    },
 
+    mobile: (state, condition) => {
+      return state.mobile = condition
     }
   },
   actions: {},

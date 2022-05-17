@@ -58,7 +58,7 @@
               :value="product.count"
               type="number"
               :name="'count-by-' + product.productId"
-              :id="'product-id-' + product.productId"
+              :id="'price-product-id-' + product.productId"
             />
             <IncrementButton />
           </div>
@@ -157,7 +157,7 @@ input[type="number"] {
   box-shadow: 0px 1px 1px 0px #00000026;
   border-radius: 10px;
   background: #fff;
-  width: 260px;
+  width: 100%;
   padding: 20px;
   text-align: left;
   position: relative;
@@ -278,4 +278,40 @@ ul {
     line-height: 18px;
   }
 }
+
+@media screen and (max-width: 1200px) {
+  input[type="number"] {
+    font-size: 14px;
+  }
+  .sendform {
+    padding: 10px;
+  }
+  #basket {
+    p {
+      &.title {
+        font-size: 18px
+      }
+      &.chars {
+        font-size: 13px;
+        font-weight: 300;
+        span {
+          display: block;
+        }
+      }
+    }
+
+    ul {
+      margin: 15px 0 0;
+    }
+
+    .footer {
+      p {
+        &.price {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}
+
 </style>
