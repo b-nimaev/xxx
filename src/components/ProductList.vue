@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-md-6 col-lg-6 col-xl-4" v-for="product in products" :key="product">
+    <div class="col-6 col-md-4 col-lg-6 col-xl-4" v-for="product in products" :key="product">
       <article>
         <form
           :name="'product-id-' + product.productId"
@@ -188,5 +188,20 @@ article {
     }
   }
 }
+
+@media screen and (max-width: 1200px) {
+  article {
+    .product-thumb {
+      margin-bottom: 20px;
+    }
+    .product-title {
+      font-size: 20px;
+    }
+    .footer {
+      margin-top: 20px;
+    }
+  }
+}
+
 </style>
 

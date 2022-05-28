@@ -1,20 +1,24 @@
 <template>
   <div class="headertop">
-    <img src="@/assets/img/header.jpg" alt="Headertop decoration" />
+    <router-link to="/">
+      <img src="@/assets/img/header.jpg" alt="Headertop decoration" />
+    </router-link>
   </div>
 
   <header>
     <div class="container dflex">
       <div class="logotype">
-        <img src="@/assets/img/logotype.png" alt="Logotype xxx" />
+        <router-link to="/">
+          <img src="@/assets/img/logotype.png" alt="Logotype xxx"
+        /></router-link>
       </div>
       <div class="contacts">
         <p class="muted">Наш адрес:</p>
         <p>ул. Борсоева, 56</p>
-        <button>
+        <a href="tel:83012440366" class="button">
           <img src="@/assets/img/phone.png" alt="Phone ico" />
           <span>8 (3012) 44-03-66</span>
-        </button>
+        </a>
       </div>
       <div class="right_side">
         <button class="toggler">
@@ -36,8 +40,10 @@
   <section id="pre-footer">
     <div class="container dflex">
       <div class="logotype">
-        <img src="@/assets/img/logotype.png" alt="Logotype" />
-        <a class="tel" href="javascript:void(0)">
+        <router-link to="/">
+          <img src="@/assets/img/logotype.png" alt="Logotype" />
+        </router-link>
+        <a class="tel" href="tel:+73012660366">
           <img src="@/assets/img/phone-red.png" alt="Phone red" />
           <span>+7 (3012) 66‒03‒66</span>
         </a>
@@ -63,7 +69,15 @@
         </ul>
       </div>
       <div class="map">
-        <img src="@/assets/img/map.jpg" alt="Map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2466.514053627694!2d107.64903758196195!3d51.81503936091193!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5dafdb9936e7b389%3A0x4e154ce95ca590a2!2z0KLRgNC4INCY0LrRgdCw!5e0!3m2!1sru!2sru!4v1652768222548!5m2!1sru!2sru"
+          width="100%"
+          height="450"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
       </div>
     </div>
   </section>
@@ -85,10 +99,10 @@
 }
 #pre-footer {
   background-color: #fff;
-  padding: 60px;
+  padding: 60px 0;
   text-align: left;
   h5 {
-    color: #A7A7A7;
+    color: #a7a7a7;
     font-size: 14px;
     font-weight: 400;
     line-height: 18px;
@@ -149,7 +163,9 @@
   }
   .map {
     margin-top: 30px;
-    img {
+    width: 100%;
+    iframe {
+      border-radius: 8px;
       max-width: 100%;
     }
   }
@@ -203,7 +219,9 @@ header {
   }
   .contacts {
     margin: auto 0;
-    button {
+    a.button {
+      display: block;
+      text-decoration: none;
       margin-top: 23px;
       padding: 10px 20px;
       border-radius: 18px;
@@ -259,7 +277,24 @@ nav {
   }
 }
 
-@media screen and (max-width: 1400px) {
-
+@media screen and (max-width: 1200px) {
+  header {
+    .logotype {
+      width: auto;
+      img {
+        width: 100px;
+      }
+    }
+    .right_side {
+      width: auto;
+    }
+  }
+}
+@media screen and (max-width: 576px) {
+  header {
+    .contacts {
+      // display: none;
+    }
+  }
 }
 </style>
