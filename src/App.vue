@@ -1,106 +1,176 @@
 <template>
-  <div class="headertop">
-    <router-link to="/">
-      <img src="@/assets/img/header.jpg" alt="Headertop decoration" />
-    </router-link>
+  <div class="background-layer">
+    <img src="@/assets/img/bg.jpg" alt="background" />
   </div>
+  <div class="wrapper">
+    <header>
+      <div class="container-fluid dflex">
+        <div class="logotype">
+          <LogotypeComponent />
+        </div>
+        <div class="contacts">
+          <!-- <p>Уникальные зарядки <br> для вашего электромобиля</p> -->
+          <a href="tel:891125490888" class="button">
+            <img src="@/assets/img/phone.png" alt="Phone ico" />
+            <span>8 (9112) 54-90-88</span>
+          </a>
+        </div>
+        <div class="right_side">
+          <div class="inner">
+            <p>
+              <a class="active" href="javascript:void(0)">Rus</a> |
+              <a href="javascript:void(0)">Eng</a>
+            </p>
+            <button class="cart">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path
+                  d="M352 128C352 57.42 294.579 0 224 0 153.42 0 96 57.42 96 128H0v304c0 44.183 35.817 80 80 80h288c44.183 0 80-35.817 80-80V128h-96zM224 48c44.112 0 80 35.888 80 80H144c0-44.112 35.888-80 80-80zm176 384c0 17.645-14.355 32-32 32H80c-17.645 0-32-14.355-32-32V176h48v40c0 13.255 10.745 24 24 24s24-10.745 24-24v-40h160v40c0 13.255 10.745 24 24 24s24-10.745 24-24v-40h48v256z"
+                />
+              </svg>
+            </button>
+            <button class="toggler">
+              <img src="@/assets/img/gamburger.png" alt="Gamburger" />
+            </button>
+          </div>
 
-  <header>
-    <div class="container dflex">
-      <div class="logotype">
-        <router-link to="/">
-          <img src="@/assets/img/logotype.png" alt="Logotype xxx"
-        /></router-link>
+          <!-- <button class="login">
+            <span>Войти</span>
+            <img src="@/assets/img/union.png" alt="Login union" />
+          </button> -->
+        </div>
       </div>
-      <div class="contacts">
-        <p class="muted">Наш адрес:</p>
-        <p>ул. Борсоева, 56</p>
-        <a href="tel:83012440366" class="button">
-          <img src="@/assets/img/phone.png" alt="Phone ico" />
-          <span>8 (3012) 44-03-66</span>
-        </a>
-      </div>
-      <div class="right_side">
-        <button class="toggler">
-          <img src="@/assets/img/gamburger.png" alt="Gamburger" />
-        </button>
+    </header>
 
-        <button class="login">
-          <span>Войти</span>
-          <img src="@/assets/img/union.png" alt="Login union" />
-        </button>
-      </div>
-    </div>
-  </header>
+    <main>
+      <router-view />
+    </main>
 
-  <main>
-    <router-view />
-  </main>
+    <section id="pre-footer">
+      <div class="container dflex">
+        <div class="logotype">
+          <router-link to="/">
+            <LogotypeComponent />
+          </router-link>
+          <a href="tel:891125490888" class="button">
+            <img src="@/assets/img/phone.png" alt="Phone ico" />
+            <span>8 (9112) 54-90-88</span>
+          </a>
+        </div>
 
-  <section id="pre-footer">
-    <div class="container dflex">
-      <div class="logotype">
-        <router-link to="/">
-          <img src="@/assets/img/logotype.png" alt="Logotype" />
-        </router-link>
-        <a class="tel" href="tel:+73012660366">
-          <img src="@/assets/img/phone-red.png" alt="Phone red" />
-          <span>+7 (3012) 66‒03‒66</span>
-        </a>
-      </div>
+        <div class="address">
+          <article>
+            <h5 class="text-muted">Наш адрес:</h5>
+            <p>
+              Деревня Новосаратовка, дом 79, Всеволожский район, Ленинградская
+              область.
+            </p>
+          </article>
+          <article>
+            <h5>Работаем для вас:</h5>
+            <p>Ежедневно с 00:00 до 23:59</p>
+          </article>
+        </div>
 
-      <div class="address">
-        <article>
-          <h5 class="text-muted">Наш адрес:</h5>
-          <p>г. Улан-Удэ, Борсоева, 56б</p>
-        </article>
-        <article>
-          <h5>Работаем для вас:</h5>
-          <p>Ежедневно с 11:00 до 22:00</p>
-        </article>
+        <div class="for-clients">
+          <h5 class="text-muted">Клиентам</h5>
+          <ul>
+            <li><router-link to="/contacts">Конакты</router-link></li>
+            <li><router-link to="/delivery">Доставка</router-link></li>
+            <li><router-link to="/promo">Акции</router-link></li>
+          </ul>
+        </div>
       </div>
-
-      <div class="for-clients">
-        <h5 class="text-muted">Клиентам</h5>
-        <ul>
-          <li><router-link to="/contacts">Конакты</router-link></li>
-          <li><router-link to="/delivery">Доставка</router-link></li>
-          <li><router-link to="/promo">Акции</router-link></li>
-        </ul>
-      </div>
-      <div class="map">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2466.514053627694!2d107.64903758196195!3d51.81503936091193!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5dafdb9936e7b389%3A0x4e154ce95ca590a2!2z0KLRgNC4INCY0LrRgdCw!5e0!3m2!1sru!2sru!4v1652768222548!5m2!1sru!2sru"
-          width="100%"
-          height="450"
-          style="border: 0"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
-      </div>
-    </div>
-  </section>
-  <footer>
-    <h5>proudly by say-an with ♥</h5>
-  </footer>
+    </section>
+  </div>
 </template>
 
+<script>
+import LogotypeComponent from "@/components/LogotypeComponent.vue";
+export default {
+  components: {
+    LogotypeComponent: LogotypeComponent,
+  },
+};
+</script>
+
 <style lang="scss">
+.right_side {
+  .inner {
+    display: flex;
+    p {
+      margin: auto 0 auto auto;
+      color: #fff;
+      font-weight: 600;
+      a {
+        color: #50615e;
+        text-decoration: none;
+        transition: 300ms ease-in;
+        &.active {
+          color: #fff;
+        }
+      }
+    }
+  }
+  .toggler {
+    margin: 0 0 0 10px;
+  }
+  .cart {
+    margin: 0 0 0 10px;
+    svg {
+      width: 24px;
+      height: 24px;
+      fill: #fff;
+    }
+  }
+}
+.wrapper {
+  background: #171a1ae0;
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  min-height: calc(100vh - 40px);
+  display: flex;
+  flex-direction: column;
+}
+body {
+  padding: 20px;
+  background-color: #111;
+  position: relative;
+}
+.background-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  img {
+    display: block;
+    width: 50%;
+    height: auto;
+    object-fit: contain;
+    margin: auto;
+  }
+}
+
 #app {
-  font-family: "Roboto", Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Montserrat", Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #fff;
   font-weight: 300;
-  background: #fafafa;
   // background: #ffe3e3;
+  background: #000;
+  min-height: calc(100vh - 40px);
+  z-index: 1;
+  position: relative;
+  height: 100%;
 }
 #pre-footer {
-  background-color: #fff;
   padding: 60px 0;
   text-align: left;
+  margin: auto 0 0;
   h5 {
     color: #a7a7a7;
     font-size: 14px;
@@ -134,7 +204,7 @@
           font-size: 18px;
           line-height: 24px;
           font-weight: 400;
-          color: #262626;
+          color: #fff;
           text-decoration: none;
         }
 
@@ -145,29 +215,19 @@
     }
   }
   .logotype {
-    width: 260px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 50px;
+    width: fit-content;
     a {
-      display: block;
-      text-decoration: none;
-      &.tel {
-        margin-top: 15px;
-        line-height: 24px;
-        font-size: 15px;
-        font-weight: 500;
-        color: #e61e28;
-        img {
-          margin-right: 10px;
-        }
-      }
+      margin: auto;
+    }
+    a.button {
+      margin-top: 15px;
     }
   }
-  .map {
-    margin-top: 30px;
-    width: 100%;
-    iframe {
-      border-radius: 8px;
-      max-width: 100%;
-    }
+  .address {
+    width: 510px;
   }
 }
 
@@ -195,7 +255,6 @@ footer {
 
 header {
   padding: 15px 0 20px;
-  background: #fff;
   .dflex {
     justify-content: space-between;
   }
@@ -205,54 +264,53 @@ header {
     flex-direction: column;
     button {
       background-color: transparent;
-      &.toggler {
-        margin: 0 0 0 auto;
-      }
       &.login {
         margin: 24px 0 0 auto;
         span {
           color: #a7a7a7;
           margin: auto 10px auto 0;
+          font-weight: 700;
+          position: relative;
+          font-size: 1.1rem;
+          line-height: 1;
+          top: 1px;
         }
       }
     }
   }
   .contacts {
     margin: auto 0;
-    a.button {
-      display: block;
-      text-decoration: none;
-      margin-top: 23px;
-      padding: 10px 20px;
-      border-radius: 18px;
-      background-color: #00c15b;
-      color: #fff;
-      img {
-        position: relative;
-        top: -1px;
-        margin-right: 8px;
-      }
-      span {
-        font-size: 15px;
-        line-height: 16px;
-        font-weight: 500;
-      }
-    }
     p {
-      font-size: 19px;
-      line-height: 19px;
-      color: #262626;
       margin: 0;
-      &.muted {
-        font-size: 11px;
-        line-height: 16px;
-        color: #a7a7a7;
-      }
     }
   }
   .logotype {
     width: 260px;
     margin: auto 0;
+  }
+}
+
+a.button {
+  display: block;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 18px;
+  background-color: #00c15b;
+  color: #fff;
+  width: fit-content;
+  img {
+    position: relative;
+    top: -1px;
+    margin-right: 8px;
+  }
+  span {
+    font-size: 15px;
+    line-height: 16px;
+    font-weight: 500;
+  }
+
+  &:hover {
+    color: #fff;
   }
 }
 
@@ -289,11 +347,25 @@ nav {
       width: auto;
     }
   }
+
+  #pre-footer {
+    .logotype {
+      width: 200px;
+      margin-right: 30px;
+    }
+    .address {
+      width: 300px;
+    }
+    .for-clients {
+      margin-left: 30px;
+    }
+  }
 }
-@media screen and (max-width: 576px) {
-  header {
-    .contacts {
-      // display: none;
+@media screen and (max-width: 768px) {
+  #pre-footer {
+    .logotype {
+      width: 100%;
+      margin-bottom: 30px;
     }
   }
 }

@@ -5,8 +5,11 @@ $container-max-widths: (
     xl: 1140px,
     xxl: 1140px) !default;
 
-@import '~bootstrap/scss/bootstrap-grid';
-@import '~bootstrap/scss/bootstrap-reboot';
+$body-bg: #111  !default;
+$body-color: #eee  !default;
+$body-text-align: null !default;
+
+@import '~bootstrap/scss/bootstrap';
 
 button {
     border: 0;
